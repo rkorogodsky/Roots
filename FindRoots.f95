@@ -1,6 +1,23 @@
 ! Written by Royce Korogodsky
 ! 3/2/15
 ! Program that uses Newton Raphson method to find roots of a number
+SUBROUTINE POW(G,X,LOW,HIGH)
+	INTEGER, INTENT(IN) :: X
+	REAL, INTENT(IN)    :: G
+	REAL, INTENT(OUT)   :: LOW, HIGH
+	INTEGER             :: I,Z,ONE
+	ONE = 1
+	
+	I = ONE
+	Z = ONE
+	
+	! Get's X^(n-1)
+	DO WHILE (I < X)
+		Z = Z * T
+		I = I + ONE
+	END DO
+END SUBROUTINE
+
 Program FindRoots
 	
 	REAL N,G,T,Y,V,Z,LIMIT
