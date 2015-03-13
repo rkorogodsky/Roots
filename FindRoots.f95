@@ -59,7 +59,7 @@ END SUBROUTINE NEWT
 
 Program FindRoots
 	
-	REAL N,G
+	REAL N,G,FIN
 	INTEGER X,C
 	
 	! Get number, root, and guess
