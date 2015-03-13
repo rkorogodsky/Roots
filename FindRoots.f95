@@ -5,16 +5,14 @@ SUBROUTINE POW(X,T,Z,Y)
 	INTEGER, INTENT(IN) :: X
 	REAL, INTENT(IN)    :: T
 	REAL, INTENT(OUT)   :: Z,Y
-	INTEGER             :: I,ONE
-	ONE = 1
-	
-	I = ONE
-	Z = ONE
+	INTEGER             :: I	
+	I = 1
+	Z = 1
 	
 	! Get's X^(n-1)
 	DO WHILE (I < X)
 		Z = Z * T
-		I = I + ONE
+		I = I + 1
 	END DO
 	!Get's X^n
 	Y = Z * T
@@ -27,27 +25,25 @@ SUBROUTINE NEWT(X,G,N,C,FIN)
 	INTEGER, INTENT(OUT) :: C
 	REAL                 :: T,TE,Y,Z,LIMIT,V
 	LOGICAL              :: CONT
-	INTEGER              :: ONE, I
-	T = G
-	TE = G
+	T     = G
+	TE    = G
 	LIMIT = .0005
-	ONE = 1
-	FIN = 0
-	C = 0
-	CONT = .TRUE.
+	FIN   = 0
+	C     = 0
+	CONT  = .TRUE.
 	DO WHILE(CONT .eqv. .TRUE.)
 		CALL POW(X,T,Z,Y)
 		!Newton Raphsons Method for finding roots
 		T = (TE-((Y)-N)/(X*Z)) 
 		
 		!Holds the count for number of itterations
-		C = C + ONE
+		C = C + 1
 		
 		!Gets difference between new guess and old guess
 		!If within .0005 end loop and return results
 		!If user enters 1 as root return original number
 		V = ABS(TE-T)
-		IF (V <= LIMIT .or. X == ONE) THEN
+		IF (V <= LIMIT .or. X == 1) THEN
 			FIN = TE
 			CONT = .FALSE.
     	END IF
@@ -59,9 +55,9 @@ END SUBROUTINE NEWT
 
 Program FindRoots
 	
-	REAL N,G,FIN
-	INTEGER X,C
-	
+	REAL    :: N,G,FIN
+	INTEGER :: X,C,ONE
+
 	! Get number, root, and guess
 	PRINT*,"Find a Root of a number using the Newton Raphson method."
 	PRINT*,"What number would you like to find the root of? "
